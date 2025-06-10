@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+
+#define INF int(1e9)
+#define MAX_N 100001
+
+using namespace std;
+
+int n, s, ans = INF;
+int arr[MAX_N];
+
+int main(int argc, char* argv[]) {
+    cin >> n >> s;
+
+    for (int i = 1; i <= n; i++) {
+        int tmp;
+        cin >> tmp;
+        arr[i] = tmp;
+    }
+
+    for (int i = 1; i <= n; i++) {
+        int cur_sum = 0, j = i;
+        while (!(cur_sum >= s)) {
+            cur_sum += arr[j];
+            j++;
+        }
+        ans = min(ans, j-i);
+        cout << j << " - " << i << "\n";
+    }
+
+    if (ans == INF) {
+        cout << -1 << "\n";
+        return 0;
+    }
+    cout << ans << "\n";
+}
