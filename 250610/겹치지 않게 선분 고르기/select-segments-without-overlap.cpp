@@ -14,6 +14,13 @@ void fill_arr(int l, int r, bool item) {
     }
 }
 
+bool is_available(int l, int r) {
+    for (int i = l; i <= r; i++) {
+        if (visited[i]) return false;
+    }
+    return true;
+}
+
 void find(int idx, int cnt) {
     if (idx == n) {
         ans = max(ans, cnt);
@@ -22,12 +29,12 @@ void find(int idx, int cnt) {
 
     auto [l, r] = v[idx];
 
-    if (!visited[l] && !visited[r]) {
+    if (is_available(l, r)) {
         fill_arr(l, r, true);
-        find(idx+1, cnt+1);
+        find(idx + 1, cnt + 1);
+        fill_arr(l, r, false);
     }
     
-    fill_arr(l, r, false);
     find(idx+1, cnt);
 }
 
