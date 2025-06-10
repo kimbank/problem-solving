@@ -19,12 +19,15 @@ int main(int argc, char* argv[]) {
 
     for (int i = 1; i <= n; i++) {
         int cur_sum = 0, j = i;
-        while (!(cur_sum >= s)) {
+        
+        while (cur_sum < s && j <= n) {
             cur_sum += arr[j];
             j++;
         }
-        ans = min(ans, j-i);
-        cout << j << " - " << i << "\n";
+
+        if (cur_sum >= s) {
+            ans = min(ans, j-i);
+        }
     }
 
     if (ans == INF) {
