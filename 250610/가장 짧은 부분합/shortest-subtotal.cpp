@@ -19,8 +19,8 @@ int main(int argc, char* argv[]) {
 
     for (int i = 1; i <= n; i++) {
         int cur_sum = 0, j = i;
-        
-        while (cur_sum < s && j <= n) {
+
+        while (cur_sum < s && j <= n && j-i < ans) {
             cur_sum += arr[j];
             j++;
         }
