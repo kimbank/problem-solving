@@ -25,16 +25,8 @@ void find(int idx, int cnt) {
     if (!visited[l] && !visited[r]) {
         fill_arr(l, r, true);
         find(idx+1, cnt+1);
-        return;
     }
-
-    //
-    // memset(visited + idx, false, sizeof(bool) * (r-l+1));
-        // for (int i = 0; i <= n*2+1; i++) cout << visited[i] << " ";
-        // cout << "\n\n";
-
-    //
-    // memset(visited + idx, true, sizeof(bool) * (r-l+1));
+    
     fill_arr(l, r, false);
     find(idx+1, cnt);
 }
