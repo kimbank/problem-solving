@@ -9,6 +9,10 @@ int n, s, ans = INF;
 int arr[MAX_N];
 
 int main(int argc, char* argv[]) {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+
     cin >> n >> s;
 
     for (int i = 1; i <= n; i++) {
