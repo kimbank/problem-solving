@@ -25,7 +25,7 @@ int main(void) {
     int acc{0};
     int max_width = k * 2;
     for (s = 0; s <= max_idx; s++) {
-        while (e + 1 < max_idx && e - s <= max_width) {
+        while (e + 1 <= max_idx && e - s <= max_width) {
             acc += arr[e];
             e++;
         }
