@@ -14,6 +14,8 @@ int main(void) {
         cin >> arr[i];
     }
 
+    sort(arr + 1, arr + n);
+
     int s = 1;
     int e = 1;
     int s_item = arr[s];
