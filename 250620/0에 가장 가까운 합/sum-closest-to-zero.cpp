@@ -1,11 +1,10 @@
 #include <bits/stdc++.h>
 
-#define INF int(1e9)
 #define MAX_N int(1e6)
 
 using namespace std;
 
-int n, ans = INF;
+int n, ans = INT_MAX;
 int arr[MAX_N];
 
 int main(void) {
@@ -21,7 +20,7 @@ int main(void) {
     sort(arr, arr + n - 1);
 
     int s{0}, e{n - 1};
-    while(s < e) {
+    while (s < e) {
         ans = min(ans, abs(arr[s] + arr[e]));
 
         if (arr[s] + arr[e] > 0) {
