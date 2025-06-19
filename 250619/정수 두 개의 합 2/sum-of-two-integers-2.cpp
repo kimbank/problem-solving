@@ -13,26 +13,21 @@ int main(void) {
 
     cin >> n >> k;
 
-    for (int i = 1; i <= n; i++) {
+    for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
 
-    sort(arr + 1, arr + n);
+    sort(arr, arr + n);
 
-    int s = 1;
-    int e = 1;
-    int s_item = arr[s];
-    for (;s <= n; s++) {
-        int cache = ans;
-        s_item = arr[s];
+    int s = 0;
+    int e = n - 1;
 
-        while (e + 1 <= n && s_item + arr[e + 1] <= k) {
-            ans++;
-            e++;
-        }
-
-        if (cache == ans && s < e && arr[s] + arr[e] <= k) {
-            ans++;
+    while (s < e) {
+        if (arr[s] + arr[e] <= k) {
+            ans += (e - s);
+            s++;
+        } else {
+            e--;
         }
     }
 
