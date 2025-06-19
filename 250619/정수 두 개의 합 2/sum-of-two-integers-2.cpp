@@ -23,12 +23,16 @@ int main(void) {
     int e = 1;
     int s_item = arr[s];
     for (;s <= n; s++) {
+        int cache = ans;
         s_item = arr[s];
-        e = s;
 
         while (e + 1 <= n && s_item + arr[e + 1] <= k) {
             ans++;
             e++;
+        }
+
+        if (cache == ans && s < e && arr[s] + arr[e] <= k) {
+            ans++;
         }
     }
 
