@@ -21,7 +21,7 @@ int main(void) {
     int s_item = arr[s];
     for (;s <= n; s++) {
         s_item = arr[s];
-        e = s;
+        // e = s;
 
         while (e + 1 <= n && s_item + arr[e + 1] <= k) {
             ans++;
