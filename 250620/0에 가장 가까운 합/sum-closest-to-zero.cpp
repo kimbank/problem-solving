@@ -4,7 +4,8 @@
 
 using namespace std;
 
-int n, ans = INT_MAX;
+int n;
+long long ans = LLONG_MAX;
 int arr[MAX_N];
 
 int main(void) {
@@ -21,7 +22,7 @@ int main(void) {
 
     int s{0}, e{n - 1};
     while (s < e) {
-        ans = min(ans, abs(arr[s] + arr[e]));
+        ans = min(ans, (long long)(abs(arr[s] + arr[e])));
 
         if (arr[s] + arr[e] > 0) {
             e--;
