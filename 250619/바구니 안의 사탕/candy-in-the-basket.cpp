@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-#define MAX_ARR int(1e6) + 1
+#define MAX_ARR int(1e6 + 1)
 using namespace std;
 
 int n, k, ans;
@@ -20,24 +20,18 @@ int main(void) {
         max_idx = max(max_idx, idx);
     }
 
-    int s = 0, e = 0;
-    int acc = arr[0];
-    int max_width = 2 * k + 1;
-
-    while (e <= max_idx) {
-        ans = max(ans, acc);
-
-        if (e - s + 1 < max_width && e + 1 <= max_idx) {
+    int s;
+    int e = -1;
+    int acc{0};
+    int max_width = k * 2;
+    for (s = 0; s <= max_idx; s++) {
+        while (e + 1 <= max_idx && e - s <= max_width) {
+            acc += arr[e + 1];
             e++;
-            acc += arr[e];
-        } else {
-            acc -= arr[s];
-            s++;
-            if (s > e && s <= max_idx) {
-                e = s;
-                acc = arr[s];
-            }
         }
+
+        ans = max(ans, acc);
+        acc -= arr[s];
     }
 
     cout << ans << "\n";
