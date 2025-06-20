@@ -39,7 +39,7 @@ int main(void) {
 
     int s_idx{0}, e_idx{0};
     for (s_idx = 0; s_idx < n - 1; s_idx++) {
-        if (s_idx >= e_idx)
+        // if (s_idx >= e_idx)
             e_idx = s_idx +1;
         auto [s_x, s_y] = v[s_idx];
         auto [e_x, e_y] = v[e_idx];
