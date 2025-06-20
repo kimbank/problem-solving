@@ -17,30 +17,15 @@ int main(void) {
     for (int i = 0; i < n; i++) {
         int x, y;
         cin >> x >> y;
-        v.push_back({x, y});
-        // v.push_back({y, x});
+        // v.push_back({x, y});
+        v.push_back({y, x});
     }
 
     sort(v.begin(), v.end());
 
-    // int s_idx{0}, e_idx{n - 1};
-    // while (s_idx < e_idx) {
-    //     auto [s_y, s_x] = v[s_idx];
-    //     auto [e_y, e_x] = v[e_idx];
-
-    //     if (abs(s_y - e_y) < d) {
-
-    //     }
-
-    //     if (abs(s_y - e_y) >= d) {
-    //         ans = min(ans, abs(e_x - s_x));
-    //     }
-    // }
-
     int s_idx{0}, e_idx{0};
     for (s_idx = 0; s_idx < n - 1; s_idx++) {
-        // if (s_idx >= e_idx)
-            e_idx = s_idx +1;
+        e_idx = s_idx +1;
         auto [s_x, s_y] = v[s_idx];
         auto [e_x, e_y] = v[e_idx];
 
