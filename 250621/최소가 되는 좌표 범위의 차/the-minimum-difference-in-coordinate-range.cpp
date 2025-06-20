@@ -30,7 +30,6 @@ int main(void) {
         auto [e_x, e_y] = v[e_idx];
 
         while (e_idx + 1 < n && abs(s_y - v[e_idx].second) < d) {
-            // auto [e_x, e_y] = v[e_idx + 1];
             e_idx++;
         }
 
