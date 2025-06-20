@@ -9,6 +9,9 @@ int ans = INT_MAX;
 vector<pair<int,int>> v;
 
 int main(void) {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    
     cin >> n >> d;
 
     for (int i = 0; i < n; i++) {
