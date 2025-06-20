@@ -17,8 +17,7 @@ int main(void) {
     for (int i = 0; i < n; i++) {
         int x, y;
         cin >> x >> y;
-        // v.push_back({x, y});
-        v.push_back({y, x});
+        // v.push_back({y, x});
     }
 
     sort(v.begin(), v.end());
