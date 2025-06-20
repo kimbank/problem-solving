@@ -29,16 +29,18 @@ int main(void) {
     // }
 
     int s_idx{0}, e_idx{0};
-    for (s_idx = 0; s_idx < n; s_idx++) {
+    for (s_idx = 0; s_idx < n - 1; s_idx++) {
+        e_idx = s_idx +1;
         auto [s_x, s_y] = v[s_idx];
         auto [e_x, e_y] = v[e_idx];
 
-        while (e_idx + 1 < n && abs(s_y - e_y) < d) {
-            auto [e_x, e_y] = v[e_idx + 1];
+        while (e_idx + 1 < n && abs(s_y - v[e_idx].second) < d) {
+            // auto [e_x, e_y] = v[e_idx + 1];
+            e_idx++;
         }
 
-        if (abs(s_y - e_y) >= d) {
-            ans = min(ans, abs(e_x - s_x));
+        if (abs(s_y - v[e_idx].second) >= d) {
+            ans = min(ans, abs(v[e_idx].first - s_x));
         }
     }
 
