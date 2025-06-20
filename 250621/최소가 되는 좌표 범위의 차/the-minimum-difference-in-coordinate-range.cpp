@@ -7,6 +7,7 @@ using namespace std;
 int n, d;
 int ans = INT_MAX;
 vector<pair<int,int>> v;
+multiset<int> y_values;
 
 int main(void) {
     ios::sync_with_stdio(false);
@@ -20,26 +21,24 @@ int main(void) {
         v.push_back({x, y});
     }
 
-    sort(v.begin(), v.end());
+    sort(v.begin(), v.end()); // x 기준 정렬
 
     int s_idx{0}, e_idx{0};
-    for (s_idx = 0; s_idx < n - 1; s_idx++) {
-        e_idx = s_idx +1;
-        auto [s_x, s_y] = v[s_idx];
-        auto [e_x, e_y] = v[e_idx];
 
-        while (e_idx + 1 < n && abs(s_y - v[e_idx].second) < d) {
-            e_idx++;
-        }
+    for (e_idx = 0; e_idx < n; e_idx++) {
+        y_values.insert(v[e_idx].second);
 
-        if (abs(s_y - v[e_idx].second) >= d) {
-            ans = min(ans, abs(v[e_idx].first - s_x));
+        while (!y_values.empty() && *y_values.rbegin() - *y_values.begin() >= d) {
+            ans = min(ans, v[e_idx].first - v[s_idx].first);
+            y_values.erase(y_values.find(v[s_idx].second));
+            s_idx++;
         }
     }
 
     if (ans == INT_MAX) {
         ans = -1;
     }
+
     cout << ans << "\n";
 
     return 0;
