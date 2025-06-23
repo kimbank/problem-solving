@@ -10,7 +10,7 @@ unordered_map<int, int> um;
 
 int main(void) {
     ios::sync_with_stdio(false);
-    cin.tie(0);
+    cin.tie(nullptr);
 
     cin >> n >> k;
 
@@ -19,21 +19,16 @@ int main(void) {
         um[arr[i]] = 0;
     }
 
-    int s{0}, e{-1};
-    for (s = 0; s < n; s++) {
-        while (e + 1 < n && um[arr[e + 1]] < k) {
-            ans = max(ans, ++cnt);
-            um[arr[e + 1]]++;
-            e++;
+    int s{0}, e{0};
+    for (e = 0; e < n; e++) {
+        um[arr[e]]++;
+
+        while (um[arr[e]] > k) {
+            um[arr[s]]--;
+            s++;
         }
 
-        if (arr[s] >= 0) {
-            arr[s]--;
-
-            if (arr[s] == 0) {
-                --cnt;
-            }
-        }
+        ans = max(ans, e - s + 1);
     }
 
     cout << ans << "\n";
