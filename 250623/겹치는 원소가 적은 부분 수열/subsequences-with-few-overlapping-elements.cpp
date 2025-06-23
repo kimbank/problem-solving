@@ -24,7 +24,7 @@ int main(void) {
             e++;
         }
 
-        if (arr[s] == 0) {
+        if (arr[s] >= 0) {
             arr[s]--;
             cnt--;
         }
