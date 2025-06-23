@@ -9,6 +9,9 @@ int arr[MAX_N];
 unordered_map<int, int> um;
 
 int main(void) {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
     cin >> n >> k;
 
     for (int i = 0; i < n; i++) {
@@ -26,7 +29,10 @@ int main(void) {
 
         if (arr[s] >= 0) {
             arr[s]--;
-            cnt--;
+
+            if (arr[s] == 0) {
+                --cnt;
+            }
         }
     }
 
