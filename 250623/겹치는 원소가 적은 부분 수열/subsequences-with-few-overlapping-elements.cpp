@@ -20,15 +20,15 @@ int main(void) {
     }
 
     int s{0}, e{0};
-    for (e = 0; e < n; e++) {
-        um[arr[e]]++;
-
-        while (um[arr[e]] > k) {
-            um[arr[s]]--;
-            s++;
+    for (s = 0; s < n; s++) {
+        
+        while (e + 1 < n && um[arr[e + 1]] < k) {
+            um[arr[e + 1]]++;
+            e++;
         }
 
         ans = max(ans, e - s + 1);
+        um[arr[s]]--;
     }
 
     cout << ans << "\n";
