@@ -1,46 +1,44 @@
 #include <bits/stdc++.h>
 
-#define MAX_NM int(1e5)
-
 using namespace std;
 
 int n, m;
-int fires[MAX_NM];
-int stations[MAX_NM];
-int dists[MAX_NM];
+long long ans;
+vector<long long> fires, stations;
 
 int main(void) {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     cin >> n >> m;
 
-    // init dists
     for (int i = 0; i < n; i++) {
-        dists[i] = INT_MAX;
-    }
-
-    for (int i = 0; i < n; i++) {
-        cin >> fires[i];
+        int f;
+        cin >> f;
+        fires.push_back(f);
     }
 
     for (int i = 0; i < m; i++) {
-        cin >> stations[i];
+        int s;
+        cin >> s;
+        stations.push_back(s);
     }
 
-    int f{0}, s{-1};
+    sort(fires.begin(), fires.end());
+    sort(stations.begin(), stations.end());
+
+    int s{0}, f{0};
     for (f = 0; f < n; f++) {
-        
-        while (s + 1 < m && abs(fires[f] - stations[s + 1]) < dists[f]) {
-            dists[f] = abs(fires[f] - stations[s+1]);
-            s++;
-        }
-    }
 
-    int ans{0};
-    for (int i = 0; i < n; i++) {
-        if (dists[i] != INT_MAX)
-            ans = max(ans, dists[i]);
-        else
-            ans = max(ans, abs(fires[i] - stations[m - 1]));
+        while (s + 1 < m &&
+            llabs(fires[f] - stations[s + 1]) <= llabs(fires[f] - stations[s])
+            ) {
+                s++;
+        }
+        
+        ans = max(ans, llabs(fires[f] - stations[s]));
     }
+    
     cout << ans << "\n";
 
     return 0;
