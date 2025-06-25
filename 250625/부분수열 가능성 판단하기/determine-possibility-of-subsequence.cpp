@@ -34,12 +34,17 @@ int main() {
 
     int ans = 0;
     for (int i = 0; i < m; i++) {
-        int left = (i == 0 ? -1 : prefix[i - 1]);
-        int right = (i == m - 1 ? n : suffix[i + 1]);
-        if (left < right) ans++;
+        bool left_ok = (i == 0 || prefix[i - 1] != -1);
+        bool right_ok = (i == m - 1 || suffix[i + 1] != -1);
+        bool order_ok = (i == 0 || i == m - 1 || prefix[i - 1] < suffix[i + 1]);
+
+        if (left_ok && right_ok && order_ok) {
+            ans++;
+        }
     }
 
+
     cout << ans << '\n';
-    
+
     return 0;
 }
