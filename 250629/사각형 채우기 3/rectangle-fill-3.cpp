@@ -13,9 +13,9 @@ int main(void) {
 
     dp[0] = 1UL;
     dp[1] = 2UL;
-    dp[2] = 7UL;
-    for (int i = 3; i < n + 1; i++) {
-        dp[i] = ((2 * dp[i - 1]) + (4 * dp[i - 2])) % MOD;
+    // dp[2] = 7UL;
+    for (int i = 2; i < n + 1; i++) {
+        dp[i] = ((2 * dp[i - 1]) + (((i % 2 == 0) ? 3 : 4) * dp[i - 2])) % MOD;
     }
 
     cout << dp[n] << "\n";
