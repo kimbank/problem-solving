@@ -62,13 +62,6 @@ int main(void) {
     q.push({0, n - 1});
     bfs();
 
-    // for (int r = 0; r < n; r++) {
-    //     for (int c = 0; c < n; c++) {
-    //         cout << dp[r][c] << " ";
-    //     }
-    //     cout << "\n";
-    // }
-
     cout << dp[n - 1][0] << "\n";
 
     return 0;
