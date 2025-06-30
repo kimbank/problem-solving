@@ -36,8 +36,10 @@ void bfs() {
                 int cur_w = dp[cur_r][cur_c];
                 int nxt_w = grid[nxt_r][nxt_c];
 
-                dp[nxt_r][nxt_c] = min(dp[nxt_r][nxt_c], cur_w + nxt_w);
-                q.push({nxt_r, nxt_c});
+                if (cur_w + nxt_w < dp[nxt_r][nxt_c]) {
+                    dp[nxt_r][nxt_c] = cur_w + nxt_w;
+                    q.push({nxt_r, nxt_c});
+                }
             }
         }
     }
