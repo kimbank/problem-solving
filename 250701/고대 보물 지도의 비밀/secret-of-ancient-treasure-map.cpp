@@ -5,9 +5,10 @@
 
 using namespace std;
 
-int n, k, ans = INT_MIN;
-int arr[MAX_N + 1];
-int dp[MAX_N + 1][MAX_K + 1];
+int n, k;
+long long ans = INT_MIN;
+long long arr[MAX_N + 1];
+long long dp[MAX_N + 1][MAX_K + 1];
 
 bool inRange(int r, int c) {
     return r >= 0 && r <= n && c >= 0 && c <= k;
