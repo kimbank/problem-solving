@@ -30,15 +30,15 @@ bool canGo(int r, int c) {
 }
 
 void dfs(int r, int c) {
+    visited[r][c] = true;
+    cur_cnt++;
     
     for (int d = 0; d < DIR_N; d++) {
         int nxt_r = r + dr[d];
         int nxt_c = c + dc[d];
 
         if (canGo(nxt_r, nxt_c) && arr[r][c] == arr[nxt_r][nxt_c]) {
-            visited[nxt_r][nxt_c] = true;
             dfs(nxt_r, nxt_c);
-            cur_cnt++;
         }
     }
 }
@@ -54,6 +54,10 @@ int main(void) {
 
     for (int r = 0; r < n; r++) {
         for (int c = 0; c < n; c++) {
+            if (visited[r][c]) {
+                continue;
+            }
+            
             // 순회 전 초기화
             cur_cnt = 0;
 
