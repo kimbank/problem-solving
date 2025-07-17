@@ -1,10 +1,12 @@
 #include <bits/stdc++.h>
+
+#define MAX_N int(1e5 + 1)
+
 using namespace std;
 
-const int MAX_N = 1e5 + 1;
-
-int n, k, b;
-bool excepted[MAX_N];
+int n, k, b, ans = INT_MAX;
+int arr[MAX_N];
+int prefix[MAX_N];
 
 int main() {
     ios::sync_with_stdio(false);
@@ -15,24 +17,19 @@ int main() {
     for (int i = 0; i < b; i++) {
         int num;
         cin >> num;
-        excepted[num] = true;
+
+        arr[num] = 1;
     }
 
-    int missing = 0;
-    for (int i = 1; i <= k; i++) {
-        if (excepted[i]) missing++;
+    for (int i = 1; i <= n; i++) {
+        prefix[i] = prefix[i - 1] + arr[i];
     }
 
-    int min_missing = missing;
-    
-    for (int i = k + 1; i <= n; i++) {
-        if (excepted[i - k]) missing--;
-        if (excepted[i]) missing++;
-
-        min_missing = min(min_missing, missing);
+    for (int i = 1; i <= n - k + 1; i++) {
+        ans = min(ans, prefix[i + k - 1] - prefix[i]);
     }
 
-    cout << min_missing << "\n";
-    
+    cout << ans << "\n";
+
     return 0;
 }
