@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-#define MAX_N int(1e5 + 1)
+#define MAX_N int(2e5 + 1)
 
 using namespace std;
 
