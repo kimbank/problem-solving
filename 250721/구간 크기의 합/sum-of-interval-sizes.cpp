@@ -12,7 +12,7 @@ int main(void) {
 
     cin >> n;
 
-    vector<tuple<int,int,int>> points(n * 2);
+    vector<tuple<int,int,int>> points;
 
     for (int i = 0; i < n; i++) {
         int a, b;
@@ -38,7 +38,6 @@ int main(void) {
             e = max(e, x);
 
             if (idxs.size() == 0) {
-                // cout << idx << ": " << s << ", " << e << endl;
                 ans += abs(e - s);
                 s = INT_MAX;
                 e = INT_MIN;
