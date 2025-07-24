@@ -56,7 +56,7 @@ int main() {
     }
 
 
-    for (int i = 2; i <= n; i++) {
+    for (int i = 1; i <= n; i++) {
         // 'H'-'S'
         ans = max(ans, l_h[i - 1] + r_s[i]);
         // 'H'-'P'
