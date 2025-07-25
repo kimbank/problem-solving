@@ -17,7 +17,7 @@ int main() {
     }
 
     dp[0][1] = arr[0]; dp[1][1] = arr[0];
-    dp[2][2] = arr[2]; dp[3][2] = arr[2];
+    dp[2][2] = arr[2];
     dp[4][3] = arr[4];
     for (int i = 2; i < n; i++) {
         dp[i][1] = max(dp[i-1][1], arr[i]);
