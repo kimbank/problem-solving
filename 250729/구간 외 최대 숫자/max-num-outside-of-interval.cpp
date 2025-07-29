@@ -11,6 +11,7 @@ int L[MAX_N], R[MAX_N];
 int main(void) {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
+    cout.tie(nullptr);
 
     cin >> n >> q;
     for (int i = 1; i <= n; i++) {
