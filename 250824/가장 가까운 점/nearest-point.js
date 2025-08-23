@@ -15,10 +15,19 @@ const Heap = require("collections/heap");
 
 const pointPairs = points.map(item => new Pair(item[0], item[1]));
 
+
+function better(a, b) {
+  const sa = a.x + a.y;
+  const sb = b.x + b.y;
+  if (sa !== sb) return sa < sb;
+  if (a.x !== b.x) return a.x < b.x;
+  return a.y < b.y;
+}
 const pq = new Heap(
     null,
     null,
-    (a, b) => ((b.x ** 2) + (b.y ** 2)) - ((a.x ** 2) + (a.y ** 2))
+    // (a, b) => ((b.x ** 2) + (b.y ** 2)) - ((a.x ** 2) + (a.y ** 2))
+    better
 );
 
 // insert
