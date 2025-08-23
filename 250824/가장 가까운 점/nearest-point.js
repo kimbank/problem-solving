@@ -16,19 +16,14 @@ const Heap = require("collections/heap");
 const pointPairs = points.map(item => new Pair(item[0], item[1]));
 
 
-function better(a, b) {
+function cmp(a, b) {
   const sa = a.x + a.y;
   const sb = b.x + b.y;
-  if (sa !== sb) return sa < sb;
-  if (a.x !== b.x) return a.x < b.x;
-  return a.y < b.y;
+  if (sa !== sb) return sb - sa; // x+y 작은 게 우선
+  if (a.x !== b.x) return b.x - a.x; // x 작은 게 우선
+  return b.y - a.y; // y 작은 게 우선
 }
-const pq = new Heap(
-    null,
-    null,
-    // (a, b) => ((b.x ** 2) + (b.y ** 2)) - ((a.x ** 2) + (a.y ** 2))
-    better
-);
+const pq = new Heap(null, null, cmp);
 
 // insert
 for (let i = 0; i < n; i++) {
@@ -36,14 +31,9 @@ for (let i = 0; i < n; i++) {
 }
 
 // find answer
-for (let i = 0; i < n; i++) {
-    // calc new X, Y
-    const newX = pq.peek().x + 2;
-    const newY = pq.peek().y + 2;
-
-    // change peek
-    pq.pop();
-    pq.push(new Pair(newX, newY));
+for (let i = 0; i < m; i++) {
+  const cur = pq.pop();
+  pq.push(new Pair(cur.x + 2, cur.y + 2));
 }
 
 const bestP = pq.peek();
