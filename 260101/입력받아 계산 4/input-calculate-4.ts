@@ -1,5 +1,10 @@
 const fs = require("fs");
 
-let input = fs.readFileSync(0);
+function getNumber(): number {
+    let tmp = fs.readFileSync(0).toString();
+    return Number(tmp)
+}
 
-console.log(input.toString());
+let a = getNumber();
+
+console.log(a * 2);
