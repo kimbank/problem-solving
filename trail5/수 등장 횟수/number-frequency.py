@@ -4,17 +4,16 @@ nums = list(map(int, input().split()))
 
 # Please write your code here.
 
-d = {}
+d = dict()
+
 for i in arr:
-    if i in d:
-        d[i] += 1
-    else:
+    if i not in d:
         d[i] = 1
+    else:
+        d[i] += 1
 
 for i in nums:
-    if i in d:
-        print(d[i], end=' ')
-    else:
+    if i not in d:
         print(0, end=' ')
-
-
+    else:
+        print(d[i], end=' ')
