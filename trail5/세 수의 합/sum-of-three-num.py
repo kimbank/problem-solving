@@ -21,8 +21,7 @@ for i in range(len(arr)):
             count_count[arr[j]] += 1
         else:
             count_count[arr[j]] = 1
-    # print(count_count)
-    # print(ans_ans)
+
     ans += ans_ans
 
 print(ans)
