@@ -1,27 +1,24 @@
 n, k = map(int, input().split())
 arr = list(map(int, input().split()))
 
-# Please write your code here.
-
 ans = 0
-count = dict()
 
-for i in range(len(arr)):
-    diff = k - arr[i]
+for i in range(n):
+    right = arr[i]
+    diff = k - right
 
-    ans_ans = 0
-    count_count = dict()
+    count = dict()
+
     for j in range(i):
-        diff_diff = diff - arr[j]
+        middle = arr[j]
+        diff_diff = diff - middle
 
-        if diff_diff in count_count:
-            ans_ans += count_count[diff_diff]
-
-        if arr[j] in count_count:
-            count_count[arr[j]] += 1
+        if diff_diff in count:
+            ans += count[diff_diff]
+        
+        if middle in count:
+            count[middle] += 1
         else:
-            count_count[arr[j]] = 1
-
-    ans += ans_ans
+            count[middle] = 1
 
 print(ans)
