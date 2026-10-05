@@ -5,7 +5,7 @@ grid = [
 ]
 
 visited = [
-    [0 for _ in range(m)]
+    list(0 for _ in range(m))
     for __ in range(n)
 ]
 
@@ -21,16 +21,17 @@ def can_go(x, y):
         return False
     return True
 
-def dfs(x, y):
-    dxs, dys = [0, 1], [1, 0]
+# dxs, dys = [-1, 0, 1, 0], [0, -1, 0, 1]
+dxs, dys = [1, 0], [0, 1]
 
+def dfs(x, y):
     for dx, dy in zip(dxs, dys):
         new_x, new_y = x + dx, y + dy
+
         if can_go(new_x, new_y):
             visited[new_x][new_y] = 1
             dfs(new_x, new_y)
 
-visited[0][0] = 1
 dfs(0, 0)
 
 print(
