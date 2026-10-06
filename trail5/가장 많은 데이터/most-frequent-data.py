@@ -1,19 +1,17 @@
 n = int(input())
-words = [input() for _ in range(n)]
-
-# Please write your code here.
 
 d = dict()
-max = 0
 
-for w in words:
-    if w in d:
-        d[w] += 1
-        if d[w] > max:
-            max = d[w]
+ans = 0
+for _ in range(n):
+    word = input()
+
+    if word in d:
+        d[word] += 1
     else:
-        d[w] = 1
-        if d[w] > max:
-            max = d[w]
+        d[word] = 1
+    
+    if d[word] > ans:
+        ans = d[word]
 
-print(max)
+print(ans)
