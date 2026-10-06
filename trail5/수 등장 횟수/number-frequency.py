@@ -1,19 +1,17 @@
 n, m = map(int, input().split())
 arr = list(map(int, input().split()))
-nums = list(map(int, input().split()))
-
-# Please write your code here.
+queries = list(map(int, input().split()))
 
 d = dict()
 
-for i in arr:
-    if i not in d:
-        d[i] = 1
+for num in arr:
+    if num in d:
+        d[num] += 1
     else:
-        d[i] += 1
+        d[num] = 1
 
-for i in nums:
-    if i not in d:
-        print(0, end=' ')
+for q in queries:
+    if q in d:
+        print(d[q], end=' ')
     else:
-        print(d[i], end=' ')
+        print(0, end=' ')
