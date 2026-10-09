@@ -1,18 +1,24 @@
-n, m = map(int, input().split())
+n, m = tuple(map(int, input().split()))
 
-arr = list()
-d = dict()
+words = [
+    input()
+    for _ in range(n)
+]
 
-for _ in range(n):
-    word = input()
+queries = [
+    input()
+    for _ in range(m)
+]
 
-    arr.append(word)
-    d[word] = len(arr)
+l = []
+d = {}
 
-for _ in range(m):
-    q = input()
+for w in words:
+    l.append(w)
+    d[w] = len(l)
 
-    if q in d:
-        print(d[q])
+for q in queries:
+    if q.isdigit():
+        print(l[int(q) - 1])
     else:
-        print(arr[int(q) - 1])
+        print(d[q])
