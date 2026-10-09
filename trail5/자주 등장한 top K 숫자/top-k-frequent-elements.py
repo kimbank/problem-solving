@@ -6,11 +6,8 @@ count = {}
 for x in arr:
     count[x] = count.get(x, 0) + 1
 
-new_arr = [
-    [value, key]
-    for key, value in count.items()
-]
-new_arr = sorted(new_arr, reverse=True)
+count = dict(sorted(count.items(), key=lambda x: x[0], reverse=True))
+new_arr = sorted(count.items(), key=lambda x: x[1], reverse=True)
 
 for i in range(k):
-    print(new_arr[i][1], end=' ')
+    print(new_arr[i][0], end=' ')
