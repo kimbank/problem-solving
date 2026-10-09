@@ -1,28 +1,17 @@
-n, k = map(int, input().split())
+n, k = tuple(map(int, input().split()))
 arr = list(map(int, input().split()))
 
+seen = {}
 ans = 0
-count = dict()
 
-
-for elem in arr:
-    if elem in count:
-        count[elem] += 1
-    else:
-        count[elem] = 1
-
+for x in arr:
+    seen[x] = seen.get(x, 0) + 1
 
 for i in range(n):
-    right = arr[i]
-
-    count[right] -= 1
+    seen[arr[i]] -= 1
 
     for j in range(i):
-        middle = arr[j]
-        
-        diff = k - right - middle
-
-        if diff in count:
-            ans += count[diff]
+        diff = k - arr[i] - arr[j]
+        ans += seen.get(diff, 0)
 
 print(ans)
