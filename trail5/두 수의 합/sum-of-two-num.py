@@ -1,20 +1,12 @@
 n, k = tuple(map(int, input().split()))
 arr = list(map(int, input().split()))
 
-count = dict()
+seen = {}
 ans = 0
 
-for i in range(len(arr)):
-    right = arr[i]
-
-    diff = k - right
-
-    if diff in count:
-        ans += count[diff]
-    
-    if right in count:
-        count[right] += 1
-    else:
-        count[right] = 1
+for x in arr:
+    need = k - x
+    ans += seen.get(need,0)
+    seen[x] = seen.get(x,0) + 1
 
 print(ans)
