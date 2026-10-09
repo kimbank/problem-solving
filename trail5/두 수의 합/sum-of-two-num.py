@@ -1,18 +1,20 @@
-n, k = map(int, input().split())
+n, k = tuple(map(int, input().split()))
 arr = list(map(int, input().split()))
 
+count = dict()
 ans = 0
-counter = dict()
 
-for num in arr:
-    diff = k - num
+for i in range(len(arr)):
+    right = arr[i]
 
-    if diff in counter:
-        ans += counter[diff]
+    diff = k - right
+
+    if diff in count:
+        ans += count[diff]
     
-    if num in counter:
-        counter[num] += 1
+    if right in count:
+        count[right] += 1
     else:
-        counter[num] = 1
-    
+        count[right] = 1
+
 print(ans)
