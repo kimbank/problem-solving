@@ -6,8 +6,16 @@ count = {}
 for x in arr:
     count[x] = count.get(x, 0) + 1
 
-count = dict(sorted(count.items(), key=lambda x: x[0], reverse=True))
-new_arr = sorted(count.items(), key=lambda x: x[1], reverse=True)
+def get_key(x: list):
+    return x[0]
+def get_value(x: list):
+    return x[1]
+
+# sort by key desc
+key_desc = sorted(count.items(), key=get_key, reverse=True)
+
+# sort by value desc
+result = sorted(key_desc, key=get_value, reverse=True)
 
 for i in range(k):
-    print(new_arr[i][0], end=' ')
+    print(result[i][0], end=' ')
