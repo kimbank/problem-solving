@@ -11,7 +11,7 @@ for i in range(n):
     seen[arr[i]] -= 1
 
     for j in range(i):
-        diff = k - arr[i] - arr[j]
-        ans += seen.get(diff, 0)
+        need = k - arr[i] - arr[j]
+        ans += seen.get(need, 0)
 
 print(ans)
