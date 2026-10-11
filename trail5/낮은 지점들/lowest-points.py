@@ -1,15 +1,14 @@
 n = int(input())
-points = [
-    tuple(map(int, input().split()))
-    for _ in range(n)
-]
+points = [tuple(map(int, input().split())) for _ in range(n)]
 
-ans_dict = {}
+d = {}
 
 for x, y in points:
-    if x in ans_dict:
-        ans_dict[x] = min(ans_dict[x], y)
+    if x in d:
+        if d[x] > y:
+            d[x] = y
     else:
-        ans_dict[x] = y
+        d[x] = y
 
-print(sum(ans_dict.values()))
+ans = sum(d.values())
+print(ans)
