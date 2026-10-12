@@ -12,9 +12,7 @@ for i in range(n):
     seen[right] -= 1
     for j in range(i):
         middle = arr[j]
-
         need = k - right - middle
-
         ans += seen.get(need, 0)
-    
+
 print(ans)
