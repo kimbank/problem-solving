@@ -1,15 +1,14 @@
-str = input()
+word = input()
 
 seen = {}
 
-str_list = list(str)
-
-for c in str_list:
+for c in word:
     seen[c] = seen.get(c, 0) + 1
 
-seen_sorted_list = sorted(seen.items(), key=lambda x: x[1])
+ans = 'None'
+for k, v in seen.items():
+    if v == 1:
+        ans = k
+        break
 
-if seen_sorted_list[0][1] == 1:
-    print(seen_sorted_list[0][0])
-else:
-    print('None')
+print(ans)
