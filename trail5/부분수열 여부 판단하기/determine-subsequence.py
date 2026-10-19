@@ -1,22 +1,14 @@
 n, m = map(int, input().split())
-A = [0] + list(map(int, input().split()))
-B = [0] + list(map(int, input().split()))
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
 
-def is_subsequence():
-    i = 1
+j = 0
 
-    for j in range(1, m + 1):
-        while i <= n and A[i] != B[j]:
-            i += 1
-        
-        if i == n + 1:
-            return False
-        else:
-            i += 1
-    
-    return True
+for i in range(n):
+    if j < m and A[i] == B[j]:
+        j += 1
 
-if is_subsequence():
-    print("Yes")
+if j == m:
+    print('Yes')
 else:
     print("No")
