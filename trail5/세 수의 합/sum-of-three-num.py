@@ -4,8 +4,8 @@ arr = list(map(int, input().split()))
 seen = {}
 ans = 0
 
-for el in arr:
-    seen[el] = seen.get(el, 0) + 1
+for x in arr:
+    seen[x] = seen.get(x, 0) + 1
 
 for i in range(n):
     right = arr[i]
