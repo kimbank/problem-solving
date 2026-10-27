@@ -1,12 +1,15 @@
 n = int(input())
 words = [input() for _ in range(n)]
 
-d = {}
+from sortedcontainers import SortedDict
+
+sd = SortedDict()
 
 for w in words:
-    d[w] = d.get(w, 0) + 1
+    if w in sd:
+        sd[w] += 1
+    else:
+        sd[w] = 1
 
-sorted_d = sorted(d.items(), key=lambda x: x[0])
-
-for k, v in sorted_d:
+for k, v in sd.items():
     print(k, v)
